@@ -89,6 +89,8 @@ class DolphinSpeech2Text(Speech2Text):
         **kwargs,
     ):
 
+        self.partial_ar = False # ljl
+
         qconfig_spec = set([getattr(torch.nn, q) for q in quantize_modules])
         quantize_dtype: torch.dtype = getattr(torch, quantize_dtype)
 

@@ -1,0 +1,36 @@
+LHD	Datatang-v1.2
+DBN
+SES	G00005
+CMT	*** Speech Label Information ***
+FIP	data/category/G00005/G00005S0013.wav
+CCD	reading
+REP	indoor
+RED
+RET
+CMT	*** Speech Data Coding ***
+SAM	16000
+SNB	2
+SBF	lohi
+SSB	16
+QNT	wav
+NCH	1
+CMT	*** Speaker Information ***
+SCD	O1,O2
+SEX	O1_male,O2_female
+AGE	O1_29,O2_26
+ACC	O1_漳州龙文区,O2_漳州芗城区
+ACT	O1_漳州龙文区,O2_漳州龙文区
+BIR	O1_漳州龙文区,O2_漳州芗城区
+CMT	*** Recording Conditions ***
+SNQ
+MIP	close
+MIT	O1_HUAWEI,O2_IPHONE
+SCC	Quiet
+CMT	*** Label File Body ***
+LBD	G00005S0013.txt
+LBR	1088.2367532622848
+LBO
+CMT	*** Customized Label Body ***
+SRA
+EMO
+ORS	
