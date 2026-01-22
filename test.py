@@ -1,16 +1,19 @@
 # python test.py
 
 # 测试30s识别
+
 import dolphin
 
-waveform = dolphin.load_audio("D:/_Engineering/Leet/LeetSYS/AI/DolphinASR/data/datasets/G00005/foo.wav")
-model = dolphin.load_model("base", "D:\_Engineering\Leet\LeetSYS\AI\DolphinASR\data\models\dolphin", "cpu")
+# waveform = dolphin.load_audio("./data/datasets/G00005/foo.wav")
+waveform = dolphin.load_audio("./data/datasets/audio.wav")
+model = dolphin.load_model("base", "./data/models/dolphin", "cpu")
 result = model(waveform)
 
 # Specify language
-result = model(waveform, lang_sym="zh")
+result = model(waveform, lang_sym="zh", region_sym="TW")
 
 print(result.text)
+
 
 
 # 测试>30s识别
@@ -25,9 +28,9 @@ import re
 import difflib
 
 # Load model on CPU, enable length normalization to reduce repetition
-model = dolphin.load_model("base", "D:\_Engineering\Leet\LeetSYS\AI\DolphinASR\data\models\dolphin", "cpu", normalize_length=True)
+model = dolphin.load_model("base", "./data/models/dolphin", "cpu", normalize_length=True)
 
-audio_path = "D:/_Engineering/Leet/LeetSYS/AI/DolphinASR/data/datasets/G00005/foo.wav"
+audio_path = "./data/datasets/G00005/foo.wav"
 segments_out = Path("transcript_segments.txt")
 full_out = Path("transcript_full.txt")
 
@@ -86,7 +89,7 @@ def transcribe_sliding_windows(model, wav_path, lang_sym, region_sym, window_s=3
 # 先清空分段文件，随后在识别过程中逐步追加写入
 with segments_out.open("w", encoding="utf-8"):
     pass
-fixed_parts = transcribe_sliding_windows(model, audio_path, "zh", "CN", window_s=30, hop_s=10, segments_out_path=segments_out, step_s=30, stream_non_overlap=True)
+fixed_parts = transcribe_sliding_windows(model, audio_path, "zh", "TW", window_s=30, hop_s=10, segments_out_path=segments_out, step_s=30, stream_non_overlap=True)
 segments = [
     type("Seg", (), {
         "start": s/1000.0,
